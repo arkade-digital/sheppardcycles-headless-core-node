@@ -56,9 +56,11 @@ exports.writeRobots = data =>
   __awaiter(this, void 0, void 0, function*() {
     if (data.length > -1) {
       try {
-        if (data[0].hasOwnProperty("content")) {
-          yield fs.writeFileSync("./static/robots.txt", data[0].content.code)
+        let code = null
+        if (Object.hasOwnProperty.call(data[0], "content")) {
+          code = data[0]["content"]["code"]
         }
+        yield fs.writeFileSync("./static/robots.txt", code)
       } catch (err) {
         console.error(err)
       }
